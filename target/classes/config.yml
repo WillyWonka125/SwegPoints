@@ -1,0 +1,8 @@
+#Pretty simple stuff, folks.
+
+message: "{PLAYER} just gave you a sweg point!"
+
+default: 0 
+
+playerdata:
+  test: 0

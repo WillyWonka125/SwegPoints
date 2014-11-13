@@ -1,0 +1,10 @@
+name: SwegPoints
+main: io.github.willywonka125.swegpoints.SwegPoints
+version: 0.1.1
+commands:
+  sweg:
+    description: "Gives a player a SwegPoint"
+    usage: "/sweg [player]"
+  nerd:
+    description: "Get mak'd."
+    usage: "/nerd <player>"
