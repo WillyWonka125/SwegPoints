@@ -2,6 +2,7 @@ package io.github.willywonka125.swegpoints;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 
 public class Leaderboard {
@@ -11,8 +12,7 @@ public class Leaderboard {
 	int max = 0;
 	int min = 0;
 	
-	SwegPoints main = new SwegPoints();
-	ConfigurationSection data = main.getConfig().getConfigurationSection("playerdata");
+	Plugin main = SwegPoints.getPlugin();
 	
 	public void addScore (int score, String name) { //Kinda stole this code from a few other plugins... sorry?
 		
@@ -40,7 +40,13 @@ public class Leaderboard {
 		
 	}
 	
-	public void sendLeaderboard(Player target) { //Cycle through the names table, pair it to score, send
+	public String[] getLeaderboard() { //Cycle through the names table, pair it to score, send
+		
+		boolean end = false;
+		
+		for (int i=9; i>=0 && !end; i--) {
+			
+		}
 		
 	}
 	

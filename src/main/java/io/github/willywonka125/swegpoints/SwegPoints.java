@@ -183,8 +183,8 @@ public final class SwegPoints extends JavaPlugin {
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("leaderboard")) { //Finally moved something to another class
-				
-			
+				sender.sendMessage("Yeah, this is 0.1.1");
+				return true;
 			} else if (args[0].equalsIgnoreCase("give")) {
 				getLogger().info("Sub command is give");
 				if (args.length == 1) {
@@ -231,7 +231,7 @@ public final class SwegPoints extends JavaPlugin {
 				}
 			}
 		}
-		getLogger().info("Command ran by " + sender.getName());
+		getLogger().info("Command ran by " + sender.getName() + ", SwegPoints v0.1.1");
 		return true;
 	}
 }
