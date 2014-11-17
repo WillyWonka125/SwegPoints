@@ -1,5 +1,7 @@
 package io.github.willywonka125.swegpoints;
 
+import java.util.Set;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
@@ -7,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
 
@@ -24,7 +27,7 @@ public final class SwegPoints extends JavaPlugin {
 		getLogger().info("SwegPoints is turning on!");
 		getCommand("nerd").setExecutor(nerdExecutor);
 		this.saveDefaultConfig();
-		
+		addExistingScores();
 	}
 	
 	public void onDisable() {
@@ -143,6 +146,24 @@ public final class SwegPoints extends JavaPlugin {
 		}
 	}
 	
+	public void sendLeaderboard(Player target, String[] board) {
+		for (String line: board) {
+			target.sendMessage(line);
+		}
+	}
+	
+	public void addExistingScores() {
+		ConfigurationSection pd = this.getConfig().getConfigurationSection("playerdata");
+		
+		for (String key : pd.getKeys(false)) {
+			getLogger().info(key);
+			if (this.getConfig().isInt("playerdata." + key)) {
+				leaderboard.addScore(this.getConfig().getInt("playerdata." + key), key);
+			}
+		}
+		
+	}
+	
 	String[] help ={
 			ChatColor.GOLD + "SwegPoints v0.1.1 by WillyWonka125",
 			ChatColor.GRAY + "/sweg view [player]" + ChatColor.GOLD + " - View [player]'s SwegPoints",
@@ -183,7 +204,7 @@ public final class SwegPoints extends JavaPlugin {
 					return true;
 				}
 			} else if (args[0].equalsIgnoreCase("leaderboard")) { //Finally moved something to another class
-				sender.sendMessage("Yeah, this is 0.1.1");
+				sendLeaderboard(Bukkit.getPlayer(sender.getName()), leaderboard.getLeaderboard());
 				return true;
 			} else if (args[0].equalsIgnoreCase("give")) {
 				getLogger().info("Sub command is give");
@@ -231,7 +252,7 @@ public final class SwegPoints extends JavaPlugin {
 				}
 			}
 		}
-		getLogger().info("Command ran by " + sender.getName() + ", SwegPoints v0.1.1");
+		getLogger().info("Command ran by " + sender.getName() + ", SwegPoints v0.1.2");
 		return true;
 	}
 }
