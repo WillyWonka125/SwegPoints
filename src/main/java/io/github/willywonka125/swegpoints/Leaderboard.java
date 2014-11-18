@@ -40,15 +40,10 @@ public class Leaderboard {
 	
 	public String[] getLeaderboard() { //Cycle through the names table, pair it to score, send
 		
-		boolean end = false;
 		String[] compiled = new String[10];
 		
-		for (int i=9; i>=0 && !end; i--) {
-			if (names[i] != null) {
-				compiled[i] = i + ": " + names[i] + " - " + scores[i];
-			} else {
-				end = true;
-			}
+		for (int i=9; i>=0; i--) {
+			compiled[i] = i + ": " + names[i] + " - " + scores[i];
 		}
 		return compiled;
 	}
