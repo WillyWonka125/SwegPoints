@@ -43,7 +43,7 @@ public class Leaderboard {
 		String[] compiled = new String[10];
 		
 		for (int i=9; i>=0; i--) {
-			compiled[i] = i + ": " + names[i] + " - " + scores[i];
+			compiled[i] = i+1 + ": " + names[i] + " - " + scores[i];
 		}
 		return compiled;
 	}
