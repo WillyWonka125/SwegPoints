@@ -1,5 +1,6 @@
 package io.github.willywonka125.swegpoints;
 
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 
 
@@ -43,7 +44,11 @@ public class Leaderboard {
 		String[] compiled = new String[10];
 		
 		for (int i=9; i>=0; i--) {
-			compiled[i] = i+1 + ": " + names[i] + " - " + scores[i];
+			if (!names[i].equals(null)) {
+			compiled[i] = ChatColor.GRAY + "" + i+1 + ": " + ChatColor.GOLD + names[i] + " - " + scores[i];
+			} else {
+				break;
+			}
 		}
 		return compiled;
 	}

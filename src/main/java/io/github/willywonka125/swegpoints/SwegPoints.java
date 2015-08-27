@@ -162,7 +162,9 @@ public final class SwegPoints extends JavaPlugin {
 	};
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("sweg")) {
+		if (args.length == 0) { 
+			sender.sendMessage(help);
+		} else {
 			if (args[0].equalsIgnoreCase("?") || args[0].equalsIgnoreCase("help")) {
 				sendHelp((Player) sender);
 				return true;
