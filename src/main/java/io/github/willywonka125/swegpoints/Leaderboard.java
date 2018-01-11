@@ -44,7 +44,7 @@ public class Leaderboard {
 		String[] compiled = new String[10];
 		
 		for (int i=9; i>=0; i--) {
-			if (!names[i].equals(null)) {
+			if (!names[i].isEmpty()) {
 			compiled[i] = ChatColor.GRAY + "" + i+1 + ": " + ChatColor.GOLD + names[i] + " - " + scores[i];
 			} else {
 				break;

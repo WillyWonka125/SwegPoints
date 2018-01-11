@@ -16,13 +16,16 @@ public final class SwegPoints extends JavaPlugin {
 	public static Plugin plugin;
 	Leaderboard leaderboard = new Leaderboard();
 	Nerd nerd = new Nerd(); //Heh...
+	drawDick drawDick = new drawDick();
 	
 	CommandExecutor nerdExecutor = (CommandExecutor) nerd;
+	CommandExecutor drawDickExecutor = (CommandExecutor) drawDick;
 	
 	public void onEnable() {
 		plugin = this;
 		getLogger().info("SwegPoints is turning on!");
 		getCommand("nerd").setExecutor(nerdExecutor);
+		getCommand("dick").setExecutor(drawDickExecutor);
 		this.saveDefaultConfig();
 	}
 	
@@ -47,7 +50,11 @@ public final class SwegPoints extends JavaPlugin {
 	}
 	
 	public void givePoints(Player target, Player sender) {
-		if (target == sender) {
+		if (sender.isOp()) {
+			this.getConfig().set("playerdata." + target.getName() + ".points", 1);
+			sender.sendMessage(ChatColor.GOLD + "You gave " + ChatColor.GRAY + target.getName() + ChatColor.GOLD + " a SwegPoint!");
+			target.sendMessage(ChatColor.GRAY + sender.getName() + ChatColor.GOLD + " gave you a SwegPoint!");
+		} else if (target == sender) {
 			sender.sendMessage(ChatColor.RED + "You can't give yourself SwegPoints!");
 		} else if (!(this.getConfig().isInt("playerdata." + target.getName() + ".points"))) { 
 			this.getConfig().set("playerdata." + target.getName() + ".points", 1);
@@ -151,7 +158,7 @@ public final class SwegPoints extends JavaPlugin {
 	
 	
 	String[] help ={
-			ChatColor.GOLD + "SwegPoints v0.1.3 by WillyWonka125",
+			ChatColor.GOLD + "SwegPoints v0.1.3 by the zaddyshack",
 			ChatColor.GRAY + "/sweg view [player]" + ChatColor.GOLD + " - View [player]'s SwegPoints",
 			ChatColor.GRAY + "/sweg give <player>" + ChatColor.GOLD + " - Gives SwegPoints to <player>",
 			ChatColor.GRAY + "/sweg mate <player>" + ChatColor.GOLD + " - Sends a SwegMate request to <player>",

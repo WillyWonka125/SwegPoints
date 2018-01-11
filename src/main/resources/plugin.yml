@@ -1,6 +1,6 @@
 name: SwegPoints
 main: io.github.willywonka125.swegpoints.SwegPoints
-version: 0.1.3
+version: 0.2
 commands:
   sweg:
     description: "Gives a player a SwegPoint"
@@ -8,3 +8,6 @@ commands:
   nerd:
     description: "Get mak'd."
     usage: "/nerd <player>"
+  dick:
+    description: "Draws a dick where you're looking"
+    usage: "/dick [length]"
