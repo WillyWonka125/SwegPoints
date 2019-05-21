@@ -3,6 +3,7 @@ package io.github.willywonka125.swegpoints;
 import java.util.Set;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -15,13 +16,13 @@ import org.bukkit.inventory.ItemStack;
 public class drawDick implements CommandExecutor {
 	
 	
-	public String build (Location targ, ItemStack i, int size, Player sender){
+	public String build(Location targ, ItemStack i, int size, Player sender){
 		if (size < 1) {
 			return ChatColor.RED + "i can't draw a dick that short";
 		}
 		
 		if (i.getAmount() < size + 2) {
-			return ChatColor.RED + "you need more blocks to build a dick of that size";
+			return ChatColor.RED + "you need more blocks to build a dick of that size. consider supplements";
 		}
 		
 		int x = targ.getBlockX();
@@ -96,9 +97,13 @@ public class drawDick implements CommandExecutor {
 				s = 3;
 
 			}
-			plr.sendMessage(build(plr.getTargetBlock((Set<Material>)null, 200).getLocation(), plr.getInventory().getItemInMainHand(), s, plr));
-			if (plr.getInventory().getItemInMainHand().getAmount() >= s+2) {
-				plr.getInventory().getItemInMainHand().setAmount(plr.getInventory().getItemInMainHand().getAmount() - (s+2));
+			if (plr.getGameMode().equals(GameMode.SURVIVAL)) {
+				plr.sendMessage(build(plr.getTargetBlock((Set<Material>)null, 200).getLocation(), plr.getInventory().getItemInMainHand(), s, plr));
+				if (plr.getInventory().getItemInMainHand().getAmount() >= s+2) {
+					plr.getInventory().getItemInMainHand().setAmount(plr.getInventory().getItemInMainHand().getAmount() - (s+2));
+				}
+			} else {
+				plr.sendMessage(build(plr.getTargetBlock((Set<Material>)null, 200).getLocation(), plr.getInventory().getItemInMainHand(), s, plr));
 			}
 		}
 		return true;

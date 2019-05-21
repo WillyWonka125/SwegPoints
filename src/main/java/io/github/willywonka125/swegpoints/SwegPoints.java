@@ -17,6 +17,7 @@ public final class SwegPoints extends JavaPlugin {
 	Leaderboard leaderboard = new Leaderboard();
 	Nerd nerd = new Nerd(); //Heh...
 	drawDick drawDick = new drawDick();
+	CommandSpy cspy = new CommandSpy();
 	
 	CommandExecutor nerdExecutor = (CommandExecutor) nerd;
 	CommandExecutor drawDickExecutor = (CommandExecutor) drawDick;
@@ -27,6 +28,9 @@ public final class SwegPoints extends JavaPlugin {
 		getCommand("nerd").setExecutor(nerdExecutor);
 		getCommand("dick").setExecutor(drawDickExecutor);
 		this.saveDefaultConfig();
+		
+		getServer().getPluginManager().registerEvents(cspy, SwegPoints.getPlugin());
+		
 	}
 	
 	public void onDisable() {
