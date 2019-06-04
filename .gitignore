@@ -41,4 +41,25 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-/target/
+target/
+
+# Compiled #
+############
+bin
+build
+dist
+lib
+out
+run
+target
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Repository #
+##############
+.git
+
