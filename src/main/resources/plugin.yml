@@ -1,13 +1,43 @@
-name: SwegPoints
-main: io.github.willywonka125.swegpoints.SwegPoints
-version: 0.2
+name: ZaddyCraft
+main: io.github.willywonka125.zaddycraft.ZaddyCraft
+version: Dev-0.1
 commands:
   sweg:
     description: "Gives a player a SwegPoint"
     usage: "/sweg [player]"
+    permission: sp.sweg
   nerd:
     description: "Get mak'd."
     usage: "/nerd <player>"
+    permission: sp.nerd
   dick:
     description: "Draws a dick where you're looking"
     usage: "/dick [length]"
+    permission: sp.dick
+  cspy:
+    description: "Access CommandSpy functions"
+    usage: "/cspy"
+    permission: sp.cspy
+  zc:
+  	description: "Acess ZaddyCraft admin functions"
+  	usage: "/zc"
+    
+permissions:
+  sp.*:
+    description: Gives access to all commands
+    children:
+      sp.nerd: true
+      sp.dick: true
+      sp.cspy: true
+    sp.sweg:
+      description: Access SwegPoints features ONLY
+      default: true
+    sp.dick:
+      description: Allow users to execute /dick
+      default: true
+    sp.nerd:
+      description: Allow users to execute /nerd
+      default: op
+    sp.cspy:
+      description: Allows users to see all commands ran by anyone on the server
+      default: op
